@@ -181,6 +181,707 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/Singular_value_decomposition(SVD)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xucheng Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor Zhang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/14/Singular_value_decomposition(SVD)/" class="post-title-link" itemprop="url">Review of linear algebra 4</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-14T00:00:00+08:00">2019-11-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 01:33:47" itemprop="dateModified" datetime="2019-11-23T01:33:47+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear algebra</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Singular value decomposition(SVD)</p>
+</blockquote>
+<p>Any matrix A can be factorized into $A = U\Sigma V^T$ ($\Sigma$ is diagonal, U,V are orthogonal)</p>
+<p><u>Proof</u>.</p>
+<p>Suppose A is a m$\times$ n matrix whose rank is r, according to spectral theorem, $A^TA$ can be factorized into</p>
+<script type="math/tex; mode=display">
+A^TA=V\Lambda V^T</script><p>Note that $A^TA$ is not only symmetric, but also positive definite (use criterion 2, $x^T(A^T)AX=(Ax)^TAx=||Ax||&gt;0$), so $\lambda_i&gt;0$.</p>
+<p>If we can find </p>
+<script type="math/tex; mode=display">
+\begin{eqnarray}
+Av_1&=&\sigma_1u_1\\
+&\cdots&\\Av_r&=&\sigma_ru_r\\
+Av_{r+1}&=&0\\
+Av_n&=&0\\
+\end{eqnarray}</script><p>Then A can be expressed as </p>
+<script type="math/tex; mode=display">
+\begin{align}
+AV&=U\Sigma\\
+A&=U\Sigma V^T
+\end{align}</script><p>So next we want to show that u is orthogonal</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray}
+u_1&=&\frac{Av_1}{\sigma_1}\\
+&\cdots&\\u_r&=&\frac{Av_r}{\sigma_r}\\
+
+\end{eqnarray}</script><script type="math/tex; mode=display">
+U_i^TU_j = (\frac{Av_i}{\sigma_i})^T\frac{Av_j}{\sigma_j}=\frac{v_i^TA^TAv_j}{\sigma_i\sigma_j}=\frac{v_i^Tv_j\sigma_j}{\sigma)i}=0</script><p>Then</p>
+<script type="math/tex; mode=display">
+\begin{align}
+A^TA&=V\Sigma^TU^T(U\Sigma V^T)\\&=V\Sigma^T\Sigma V^T\ (U^TU=1)
+\end{align}</script><p>$v-$eigenvectors of $A^TA$</p>
+<p>$\sigma^2-$eigenvalues of $A^TA$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+AA^T&=U\Sigma V^T(V\Sigma U^T)\\
+&=U\Sigma\Sigma^TU^T
+\end{align}</script><p>So U are eigenvectors of $AA^T$.</p>
+<blockquote>
+<p>Geometrical explanation of SVD</p>
+</blockquote>
+<p>SVD tell us that a matrix multiplication can be factorized into a rotation, a streching and a projection. A more thorough explanation can be found in <a href="https://blog.csdn.net/qq_32742009/article/details/82286434" target="_blank" rel="noopener">https://blog.csdn.net/qq_32742009/article/details/82286434</a></p>
+<blockquote>
+<p>Other factorization of a matrix</p>
+</blockquote>
+<p>Other factorization of a matrix can be constructed on SVD, for example, a <strong>polar decomposition</strong> of a matrix is widely used in engineering.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+A&=SQ\ (symmetric \times orthogonal)\\
+From\ SVD, A&=U\Sigma V^T\\
+&=U\Sigma U^TUV^T\\
+Let\ S&=U\Sigma U^T\\
+Q&=UV^T
+\end{align}</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/Eigenvectors_of%20matrix_A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xucheng Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor Zhang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/07/Eigenvectors_of%20matrix_A/" class="post-title-link" itemprop="url">Review of linear algebra 3</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-07T00:00:00+08:00">2019-11-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 01:33:35" itemprop="dateModified" datetime="2019-11-23T01:33:35+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear algebra</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Eigenvectors of matrix A</p>
+</blockquote>
+<p>Suppose A is a n$\times$n matrix,</p>
+<script type="math/tex; mode=display">
+Ax_i=\lambda_ix_iw</script><p>Why is eigenvectors so important? Answer: The effect of multiplying and dividing by A with its eigenvectors can be summarized by multiplying and dividing by the corresponding eigenvalues. i.e.</p>
+<script type="math/tex; mode=display">
+A^kx_i = \lambda_i^kx_i\\
+A^{-1}x_i=\frac{1}{\lambda_i}x_i\\
+e^{At}x_i=e^{\lambda_it}x_i</script><p>We can use eigenvectors of A as a basis so that any vector in the column space of A can be expressed with respect to this basis:</p>
+<script type="math/tex; mode=display">
+v= c_1x_1+\cdots+c_nx_n</script><p>Utilizing this basis representation, we can solve two vector equations, namely, difference equation and differential equation.</p>
+<ul>
+<li><p>Difference equation</p>
+<script type="math/tex; mode=display">
+v_{k+1}=Av_k\\
+v_k = A^kv=c_1\lambda_1^kx_1+\cdots+c_n\lambda_n^kx_n</script></li>
+<li><p>Differential equation</p>
+<script type="math/tex; mode=display">
+\frac{dv}{dt}=Av\\
+v = c_1e^{\lambda_1t}x_1+\cdots+c_ne^{\lambda_nt}x_n</script></li>
+</ul>
+<blockquote>
+<p>Similar matrix</p>
+</blockquote>
+<p>B is similar to A iff $B=M^{-1}AM$ ($M$ is any invertiable matrix).</p>
+<ul>
+<li>B and A have the same eigenvalues.</li>
+</ul>
+<p><u>Proof.</u></p>
+<script type="math/tex; mode=display">
+\begin{align}
+By&=\lambda y\\
+M^{-1}AMy&=\lambda y\\
+A(My)&=\lambda (My)
+\end{align}</script><p>$\lambda$ is also an eigenvalue of A with different eigenvectors.</p>
+<ul>
+<li>AB has the same non-zero eigenvalues as BA</li>
+</ul>
+<p><u>Proof.</u></p>
+<script type="math/tex; mode=display">
+\begin{align}
+Take \ M&=B\\
+M(AB)M^{-1}&=BABB^{-1}=BA\\
+\end{align}</script><p>AB is similar to BA, hence they have the same eigenvalues.</p>
+<p>For any matrix A, we want to find a special matrix M that makes A similar to its eigenvalue matrix $\Lambda$ (diagonal matrix with eigenvalues as its diagonal elements), i.e.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+M^{-1}AM&=\Lambda\\AM&=M\Lambda\\A[m_1\cdots m_n]&=[\lambda_1m_1\cdots \lambda_nm_n]\\\ [Am_1\cdots Am_n]&=[\lambda_1m_1\cdots \lambda_nm_n]\\m_i&=x_i
+\end{align}</script><p>M has A’s eigenvectors as its columns, A can be espressed as $A=X\Lambda X^{-1}$.</p>
+<blockquote>
+<p>Symmetric matrices</p>
+</blockquote>
+<p>Symmetric matrices have all real eigenvalues.</p>
+<ul>
+<li>counter examples (anti-symmetric matrix)<script type="math/tex; mode=display">
+A=\left(\begin{array}{cc}0 & 1 \\-1 & 0\end{array}\right)</script>$\lambda_1+\lambda_2=tr(A)=0$, $\lambda_1\lambda_2=det(A)=1$ =&gt; $\lambda_1 = i,\ \lambda_2=-i$ .</li>
+</ul>
+<p>For symmetric matrix S, its eigenvector are orthogonal.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+S &= Q\Lambda Q^{-1}\\
+S^T &= {(Q^{-1})}^T\Lambda Q^T=S\\
+Q^{-1} &=Q^T\\
+S&=Q\Lambda Q^T\ (spectral\ theorem)
+\end{align}</script><p>In practice, Q has to be normalized to give orthonormal columns.</p>
+<blockquote>
+<p>Symmetric positive definite matrix S</p>
+</blockquote>
+<p>Positive-definiteness of symmetric matrix S can be concluded by the following 5 criteria:</p>
+<ol>
+<li>All $\lambda_i = 0$;</li>
+<li>For all $x\neq 0$, energy $x^TSx&gt;0$;</li>
+<li>$S=A^TA$ (independent columns in A);</li>
+<li>All leading determinants &gt; 0;</li>
+<li>All pivots in elimination &gt; 0;</li>
+</ol>
+<p>e.g.</p>
+<script type="math/tex; mode=display">
+S=\left(\begin{array}{cc}3 & 4 \\4 & 6\end{array}\right)</script><p>Use criterion 4, 1st determinant = 3 &gt; 0, 2nd determinant = $3\times6-4\times4=2&gt;0$;</p>
+<p>Use criterion 5, elimination gives</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{cc}3 & 4 \\0 & 2/3\end{array}\right)</script><p>1st pivot 3 &gt; 0, 2nd pivot 2/3 &gt; 0;</p>
+<p>Use criterion 2,</p>
+<script type="math/tex; mode=display">
+f(x,y)=(x\ y)\left(\begin{array}{cc}3 & 4 \\4 & 6\end{array}\right)\left(\begin{array}{cc}x \\ y\end{array}\right)=3x^2+6y^2+8xy>0\ (bowl-shape\ energy\ profile)</script><p>If S, T are both pos.def.(positive difinite), S+T is also pos.def.</p>
+<p>If S is pos.def. ,$S^{-1}$ is also pos.def.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/orthogonal%20_colmuns/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xucheng Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor Zhang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/07/orthogonal%20_colmuns/" class="post-title-link" itemprop="url">Review of linear algebra 2</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-07T00:00:00+08:00">2019-11-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 01:33:21" itemprop="dateModified" datetime="2019-11-23T01:33:21+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear algebra</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Matrix $Q$ with orthonormal columns</p>
+</blockquote>
+<p>Orthonormal columns $Q=[q_1, \cdots, q_2]$ , i.e.</p>
+<script type="math/tex; mode=display">
+Q^TQ = I=\begin{cases}
+      & {q_i^Tq_j=0\qquad ('ortho')} \\
+      & {\quad q_i^2=1}\qquad ('norm')
+        \end{cases}</script><p>Additionally, if $Q$ is a square matrix, $Q^TQ=I$ implies $Q^T=Q^{-1}$, in which case $QQ^T=I$ also holds. This  square matrix is called <strong>orthogonal matrix</strong>.</p>
+<blockquote>
+<p>Examples of orthogonal matrices</p>
+</blockquote>
+<ul>
+<li><p>2D rotation matrix</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{cc}cos\theta & -sin\theta \\sin\theta & cos\theta\end{array}\right)</script></li>
+<li><p>2D reflection matrix (reflect w.r.t. $\frac{\theta}{2}$ line)</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{cc}cos\theta & sin\theta \\sin\theta & -cos\theta\end{array}\right)</script></li>
+<li><p>General reflection matrix (Householder reflection matrix)</p>
+<script type="math/tex; mode=display">
+Let\ U^TU=1\\
+H = I-2UU^T</script><p>It’s easy to show that H is both symmetric and orthogonal.</p>
+</li>
+<li><p>Other important orthogonal matrices  </p>
+<ul>
+<li>Hadamard matrices</li>
+<li>Haar matrices (wavelet)</li>
+</ul>
+</li>
+<li><p>Eigenvectors of symmetric matrices and orthogonal matrices are orthogonal</p>
+<p>e.g. Permutation matrix</p>
+<script type="math/tex; mode=display">
+Q=\left(\begin{array}{cccc}0 & 1 & 0 & 0 \\0 & 0 & 1& 0 \\0 & 0 & 0 & 1 \\1 & 0 & 0 & 0\end{array}\right)</script><p>The eigenvectors of the permutation matrix is 4 discrete Fourier transform, eigenvector matrix of Q is</p>
+<script type="math/tex; mode=display">
+F_4=\left(\begin{array}{cccc}1 & 1 & 1 & 1 \\1 & i & i^2 & i^3 \\1 & i^2 & i^4 & i^6 \\1 & i^3 & i^6 & i^9\end{array}\right)</script></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/line_break_and_whitespace/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xucheng Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor Zhang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/05/line_break_and_whitespace/" class="post-title-link" itemprop="url">Line break and whitespace</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-05 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-05T00:00:00+08:00">2019-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 01:30:06" itemprop="dateModified" datetime="2019-11-23T01:30:06+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Miscellenous/" itemprop="url" rel="index">
+                    <span itemprop="name">Miscellenous</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Line-break"><a href="#Line-break" class="headerlink" title="Line break"></a>Line break</h3><p>A.k.a newline is a character/characters denoting the end of a line. Basically, there’re two types of line break:</p>
+<ul>
+<li>Unix-like line break(<strong>LF</strong>, <strong>line feed</strong>), in ASCII encode, \n.</li>
+<li>Windows-like line break(<strong>CRLF</strong>, <strong>carriage return line feed</strong>), in ASCII encode, \r\n.</li>
+</ul>
+<p>In practice, most modern text editors allow both types of line breaks, usually by pressing the enter/return key on the keyboard. </p>
+<p>There is another thing worth illustrating here, when you start a new line, what you actually do is starting a new paragraph because most text editor support <strong>word worp</strong>, which means the text you see on the screen will automatically change accoring to the size of the display window.  Therefore, there is no need to manually start a new line if you just what to keep on typing. The result is that every time you press <strong>enter</strong>, the computer will interpretes it as a <strong>hard enter</strong>, in other words, you press enter to start a new paragraph instead of a new line. In occasions where you do need to start a new line (e.g. in poetry, list, address), a <strong>soft enter</strong> is needed, which is usually done either by explicitly inserting a “\<br>“ sign or by press <strong>shift + enter</strong>.</p>
+<h3 id="Whitespace"><a href="#Whitespace" class="headerlink" title="Whitespace"></a>Whitespace</h3><p>In markdown/HTML, sequential whitespace will be rendered as a single whitespace, if you want to insert consecutive whitespaces, you can use html <strong>&amp;nbsp</strong> sign. (nbps means non-breaking space)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/matrix_multiplication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xucheng Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor Zhang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/04/matrix_multiplication/" class="post-title-link" itemprop="url">Review of linear algebra 1</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-04 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-04T00:00:00+08:00">2019-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 01:29:18" itemprop="dateModified" datetime="2019-11-23T01:29:18+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear algebra</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>Instead of viewing matrix multiplication <strong>A</strong> <strong><em>x</em></strong> as every row of <strong>A</strong> times <strong><em>x</em></strong> , see that as a linear combination of the columns of <strong>A</strong>.<br>i.e.</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{ccc} a_{11} &a_{12}   & a_{13}  \\a_{21}& a_{22}  &a_{23}   \\a_{31}  &a_{32}   &a_{33}  \end{array}\right)\left(\begin{array}{c}  x_1\\x_2  \\x_3 \end{array}\right)=x_1\left(\begin{array}{c}  a_{11}\\a_{21}  \\a_{31} \end{array}\right)+x_2\left(\begin{array}{c}  a_{12}\\a_{22}  \\a_{32} \end{array}\right)+x_3\left(\begin{array}{c}  a_{13}\\a_{23}  \\a_{33} \end{array}\right)</script></li>
+<li><p>The combinations of the columns fills out the <strong>column space</strong> of <strong>A</strong>.</p>
+</li>
+<li><p><strong><em>b</em></strong> = (<em>b1,b2,b3</em>) is in the column space of <strong>A</strong> exactly when <strong>A</strong> <strong><em>x</em></strong> = <strong><em>b</em></strong> has a solution (<em>x1,x2</em>).</p>
+</li>
+<li><ul>
+<li><p>Three independent columns in <strong>R</strong><sup>3</sup> produce an invertible matrix: <strong>A</strong> <strong>A</strong><sup>−1</sup>=<strong>A</strong> <strong>A</strong><sup>−1</sup>=<strong>I</strong>.  </p>
+</li>
+<li><p><strong>A</strong> <strong><em>x</em></strong>  = 0 requires <strong><em>x</em></strong> = (0,0,0). Then <strong>A</strong> <strong><em>x</em></strong>  = <strong><em>b</em></strong> has exactly one solution <strong><em>x</em></strong> = <strong>A</strong><sup>−1</sup> <strong><em>b</em></strong>.</p>
+</li>
+</ul>
+</li>
+<li><p>There’re two ways on how to multiply two matrices, suppose we’re multipying a (m by n) matrix <strong>A</strong> with a (n by p) matrix <strong>B</strong> and the resulting matrix is a (m by p) matrix <strong>C</strong>.  </p>
+<p>  One way of doing that is to take the dot product of row i of <strong>A</strong> with column j of <strong>B</strong>, this operation will gives us an entry C~ij~ of the resulting matrix <strong>C</strong>. In total, it costs us <strong><em>mnp</em></strong> multiplications(every such dot product costs n multiplications and the resulting matrix <strong>C</strong> has <strong><em>mnp</em></strong> entries).<br>  The other way of doing matrix multiplication is to take the <strong>outer product</strong> of column k of <strong>A</strong> with the corresponding row k of <strong>B</strong> and adds the result of those outer product together to give <strong>C</strong>. This approach also costs us <strong><em>mnp</em></strong> multiplications (every outer product produces a m by p matrix as <strong>C</strong> and there’re n such outer products). </p>
+</li>
+<li><p>The rank of a matrix is the dimension of its column space, it counts the independent columns of <strong>A</strong>.</p>
+</li>
+<li><p>We can factorize <strong>A</strong> into two matrices, namely, <strong>A = CR</strong>. The first matrix includes all independent columns of <strong>A</strong>, and we call that <strong>C</strong>, the second matrix is called <strong>row-reduced echelon form of A</strong> or <strong>R = rref</strong>(<strong>A</strong>).</p>
+</li>
+<li><p>The number of independent columns equals the number of independent rows, i.e. <strong>Column Rank = Row Rank</strong>.</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/%E7%94%A8Hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xucheng Zhang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Victor Zhang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/02/%E7%94%A8Hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Start blogging with Hexo</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-11-02 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-02T00:00:00+08:00">2019-11-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 01:32:23" itemprop="dateModified" datetime="2019-11-23T01:32:23+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Miscellenous/" itemprop="url" rel="index">
+                    <span itemprop="name">Miscellenous</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>框架的本地安装与运行</p>
+</blockquote>
+<p>安装node.js </p>
+<p>直接在官网下载并安装</p>
+<p>安装Hexo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install hexo-cli -g</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo init blog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo server</span></span><br></pre></td></tr></table></figure>
+<p>生成静态网站</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo clean <span class="comment">#clean up cache files</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo g <span class="comment">#g stands for generate</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo d <span class="comment">#d stands for deploy</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Hexo博客主题的安装</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> blog </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> &lt;theme_url&gt; themes/&lt;theme_title&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi _config.yml</span></span><br><span class="line">  ...</span><br><span class="line"><span class="meta">  #</span><span class="bash"> Extensions</span></span><br><span class="line"><span class="meta">  #</span><span class="bash"><span class="comment"># Plugins: https://hexo.io/plugins/</span></span></span><br><span class="line"><span class="meta">  #</span><span class="bash"><span class="comment"># Themes: https://hexo.io/themes/</span></span></span><br><span class="line">  theme: &lt;theme_title&gt; #change to theme_title</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>自定义博客结构</p>
+</blockquote>
+<p>To be continued…</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/conda%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -204,10 +905,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-11-01 00:00:00 / Modified: 02:52:03" itemprop="dateCreated datePublished" datetime="2019-11-01T00:00:00+08:00">2019-11-01</time>
+              <time title="Created: 2019-11-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-01T00:00:00+08:00">2019-11-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-02 22:45:58" itemprop="dateModified" datetime="2019-11-02T22:45:58+08:00">2019-11-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -251,11 +958,7 @@
 <h3 id="四-关闭虚拟环境"><a href="#四-关闭虚拟环境" class="headerlink" title="四.关闭虚拟环境"></a>四.关闭虚拟环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux: source deactivate</span><br><span class="line">Windows: deactivate</span><br></pre></td></tr></table></figure>
 <h3 id="五-删除虚拟环境"><a href="#五-删除虚拟环境" class="headerlink" title="五.删除虚拟环境"></a>五.删除虚拟环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n your_env_name --all</span><br><span class="line">conda remove --name your_env_name  package_name  # 删除环境中的某个包</span><br></pre></td></tr></table></figure>
 <h3 id="六-添加conda下载镜像"><a href="#六-添加conda下载镜像" class="headerlink" title="六.添加conda下载镜像"></a>六.添加conda下载镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>test</p>
-</blockquote>
-<script type="math/tex; mode=display">
-V_x = \frac{dx}{dt} = -Xk\sin(kt+\psi) = -V_r = 10km{\cdot}s^{-1}</script>
+
       
     </div>
 
@@ -317,16 +1020,16 @@ V_x = \frac{dx}{dt} = -Xk\sin(kt+\psi) = -V_r = 10km{\cdot}s^{-1}</script>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

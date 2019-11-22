@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="〇.conda基础conda常用的命令:123conda list #查看安装了哪些包  conda env list 或 conda info -e #查看当前存在哪些虚拟环境  conda update conda #检查更新当前conda  Pip 和 conda 的区别：Pip installs Python packages whereas conda installs packages">
-<meta name="keywords" content="conda,pip">
+  <meta name="description" content="Instead of viewing matrix multiplication A x as every row of A times x , see that as a linear combination of the columns of A.i.e.  \left(\begin{array}{ccc} a_{11} &amp;a_{12}   &amp; a_{13}  \\a_{21}&amp; a_{22">
+<meta name="keywords" content="Matrix multiplication">
 <meta property="og:type" content="article">
-<meta property="og:title" content="conda基本操作">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;01&#x2F;conda%E4%BD%BF%E7%94%A8&#x2F;index.html">
+<meta property="og:title" content="Review of linear algebra 1">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;04&#x2F;matrix_multiplication&#x2F;index.html">
 <meta property="og:site_name" content="Victor Zhang&#39;s Blog">
-<meta property="og:description" content="〇.conda基础conda常用的命令:123conda list #查看安装了哪些包  conda env list 或 conda info -e #查看当前存在哪些虚拟环境  conda update conda #检查更新当前conda  Pip 和 conda 的区别：Pip installs Python packages whereas conda installs packages">
+<meta property="og:description" content="Instead of viewing matrix multiplication A x as every row of A times x , see that as a linear combination of the columns of A.i.e.  \left(\begin{array}{ccc} a_{11} &amp;a_{12}   &amp; a_{13}  \\a_{21}&amp; a_{22">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-02T14:45:58.639Z">
+<meta property="og:updated_time" content="2019-11-22T17:29:18.520Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/01/conda%E4%BD%BF%E7%94%A8/">
+<link rel="canonical" href="http://yoursite.com/2019/11/04/matrix_multiplication/">
 
 
 <script id="page-configurations">
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title>conda基本操作 | Victor Zhang's Blog</title>
+  <title>Review of linear algebra 1 | Victor Zhang's Blog</title>
   
 
 
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/conda%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/matrix_multiplication/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          conda基本操作
+          Review of linear algebra 1
         </h1>
 
         <div class="post-meta">
@@ -208,14 +208,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-11-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-01T00:00:00+08:00">2019-11-01</time>
+              <time title="Created: 2019-11-04 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-04T00:00:00+08:00">2019-11-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-02 22:45:58" itemprop="dateModified" datetime="2019-11-02T22:45:58+08:00">2019-11-02</time>
+                <time title="Modified: 2019-11-23 01:29:18" itemprop="dateModified" datetime="2019-11-23T01:29:18+08:00">2019-11-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,14 +223,14 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/conda/" itemprop="url" rel="index">
-                    <span itemprop="name">conda</span>
+                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear algebra</span>
                   </a>
                 </span>
             </span>
@@ -246,20 +246,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="〇-conda基础"><a href="#〇-conda基础" class="headerlink" title="〇.conda基础"></a>〇.conda基础</h3><p>conda常用的命令:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda list #查看安装了哪些包  </span><br><span class="line">conda env list 或 conda info -e #查看当前存在哪些虚拟环境  </span><br><span class="line">conda update conda #检查更新当前conda</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Pip 和 conda 的区别：Pip installs Python packages whereas conda installs packages which may contain software written in any language. For example, before using pip, a Python interpreter must be installed via a system package manager or by downloading and running an installer. Conda on the other hand can install Python packages as well as the Python interpreter directly.</p>
-<p>Occasionally a package is needed which is not available as a conda package but is available on PyPI and can be installed with pip. In these cases, it makes sense to try to use both conda and pip.</p>
-</blockquote>
-<h3 id="一-虚拟环境的作用"><a href="#一-虚拟环境的作用" class="headerlink" title="一.虚拟环境的作用"></a>一.虚拟环境的作用</h3><p>问题：如果在一台电脑上, 想开发多个不同的项目, 需要用到同一个包的不同版本, 如果使用上面的命令, 在同一个目录下安装或者更新, 新版本会覆盖以前的版本, 其它的项目就无法运行了。解决方案 : 虚拟环境 作用 : 虚拟环境可以搭建独立的python运行环境, 使得单个项目的运行环境与其它项目互不影响。</p>
-<h3 id="二-创建虚拟环境的流程"><a href="#二-创建虚拟环境的流程" class="headerlink" title="二.创建虚拟环境的流程"></a>二.创建虚拟环境的流程</h3><p>1.在命令行输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n your_env_name python=python_version</span><br></pre></td></tr></table></figure>
-<p>2.使用激活(或切换不同python版本)的虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python --version #可以检查当前python的版本</span><br><span class="line">Linux: source activate your_env_name(虚拟环境名称)</span><br><span class="line">Windows: activate your_env_name(虚拟环境名称)</span><br></pre></td></tr></table></figure>
-<h3 id="三-对虚拟环境中安装额外的包"><a href="#三-对虚拟环境中安装额外的包" class="headerlink" title="三.对虚拟环境中安装额外的包"></a>三.对虚拟环境中安装额外的包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install -n your_env_name [package]</span><br><span class="line">conda upgrade -n your_env_name [package] #更新安装包</span><br></pre></td></tr></table></figure>
-<h3 id="四-关闭虚拟环境"><a href="#四-关闭虚拟环境" class="headerlink" title="四.关闭虚拟环境"></a>四.关闭虚拟环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux: source deactivate</span><br><span class="line">Windows: deactivate</span><br></pre></td></tr></table></figure>
-<h3 id="五-删除虚拟环境"><a href="#五-删除虚拟环境" class="headerlink" title="五.删除虚拟环境"></a>五.删除虚拟环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n your_env_name --all</span><br><span class="line">conda remove --name your_env_name  package_name  # 删除环境中的某个包</span><br></pre></td></tr></table></figure>
-<h3 id="六-添加conda下载镜像"><a href="#六-添加conda下载镜像" class="headerlink" title="六.添加conda下载镜像"></a>六.添加conda下载镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+        <ol>
+<li><p>Instead of viewing matrix multiplication <strong>A</strong> <strong><em>x</em></strong> as every row of <strong>A</strong> times <strong><em>x</em></strong> , see that as a linear combination of the columns of <strong>A</strong>.<br>i.e.</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{ccc} a_{11} &a_{12}   & a_{13}  \\a_{21}& a_{22}  &a_{23}   \\a_{31}  &a_{32}   &a_{33}  \end{array}\right)\left(\begin{array}{c}  x_1\\x_2  \\x_3 \end{array}\right)=x_1\left(\begin{array}{c}  a_{11}\\a_{21}  \\a_{31} \end{array}\right)+x_2\left(\begin{array}{c}  a_{12}\\a_{22}  \\a_{32} \end{array}\right)+x_3\left(\begin{array}{c}  a_{13}\\a_{23}  \\a_{33} \end{array}\right)</script></li>
+<li><p>The combinations of the columns fills out the <strong>column space</strong> of <strong>A</strong>.</p>
+</li>
+<li><p><strong><em>b</em></strong> = (<em>b1,b2,b3</em>) is in the column space of <strong>A</strong> exactly when <strong>A</strong> <strong><em>x</em></strong> = <strong><em>b</em></strong> has a solution (<em>x1,x2</em>).</p>
+</li>
+<li><ul>
+<li><p>Three independent columns in <strong>R</strong><sup>3</sup> produce an invertible matrix: <strong>A</strong> <strong>A</strong><sup>−1</sup>=<strong>A</strong> <strong>A</strong><sup>−1</sup>=<strong>I</strong>.  </p>
+</li>
+<li><p><strong>A</strong> <strong><em>x</em></strong>  = 0 requires <strong><em>x</em></strong> = (0,0,0). Then <strong>A</strong> <strong><em>x</em></strong>  = <strong><em>b</em></strong> has exactly one solution <strong><em>x</em></strong> = <strong>A</strong><sup>−1</sup> <strong><em>b</em></strong>.</p>
+</li>
+</ul>
+</li>
+<li><p>There’re two ways on how to multiply two matrices, suppose we’re multipying a (m by n) matrix <strong>A</strong> with a (n by p) matrix <strong>B</strong> and the resulting matrix is a (m by p) matrix <strong>C</strong>.  </p>
+<p>  One way of doing that is to take the dot product of row i of <strong>A</strong> with column j of <strong>B</strong>, this operation will gives us an entry C~ij~ of the resulting matrix <strong>C</strong>. In total, it costs us <strong><em>mnp</em></strong> multiplications(every such dot product costs n multiplications and the resulting matrix <strong>C</strong> has <strong><em>mnp</em></strong> entries).<br>  The other way of doing matrix multiplication is to take the <strong>outer product</strong> of column k of <strong>A</strong> with the corresponding row k of <strong>B</strong> and adds the result of those outer product together to give <strong>C</strong>. This approach also costs us <strong><em>mnp</em></strong> multiplications (every outer product produces a m by p matrix as <strong>C</strong> and there’re n such outer products). </p>
+</li>
+<li><p>The rank of a matrix is the dimension of its column space, it counts the independent columns of <strong>A</strong>.</p>
+</li>
+<li><p>We can factorize <strong>A</strong> into two matrices, namely, <strong>A = CR</strong>. The first matrix includes all independent columns of <strong>A</strong>, and we call that <strong>C</strong>, the second matrix is called <strong>row-reduced echelon form of A</strong> or <strong>R = rref</strong>(<strong>A</strong>).</p>
+</li>
+<li><p>The number of independent columns equals the number of independent rows, i.e. <strong>Column Rank = Row Rank</strong>.</p>
+</li>
+</ol>
 
     </div>
 
@@ -269,21 +280,23 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/conda/" rel="tag"># conda</a>
-              <a href="/tags/pip/" rel="tag"># pip</a>
+              <a href="/tags/Matrix-multiplication/" rel="tag"># Matrix multiplication</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/02/%E7%94%A8Hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="next" title="Start blogging with Hexo">
+                  <i class="fa fa-chevron-left"></i> Start blogging with Hexo
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/02/%E7%94%A8Hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="Start blogging with Hexo">
-                  Start blogging with Hexo <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/05/line_break_and_whitespace/" rel="prev" title="Line break and whitespace">
+                  Line break and whitespace <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -323,7 +336,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#〇-conda基础"><span class="nav-number">1.</span> <span class="nav-text">〇.conda基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-虚拟环境的作用"><span class="nav-number">2.</span> <span class="nav-text">一.虚拟环境的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-创建虚拟环境的流程"><span class="nav-number">3.</span> <span class="nav-text">二.创建虚拟环境的流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-对虚拟环境中安装额外的包"><span class="nav-number">4.</span> <span class="nav-text">三.对虚拟环境中安装额外的包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-关闭虚拟环境"><span class="nav-number">5.</span> <span class="nav-text">四.关闭虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-删除虚拟环境"><span class="nav-number">6.</span> <span class="nav-text">五.删除虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-添加conda下载镜像"><span class="nav-number">7.</span> <span class="nav-text">六.添加conda下载镜像</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

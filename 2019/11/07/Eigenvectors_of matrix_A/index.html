@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="〇.conda基础conda常用的命令:123conda list #查看安装了哪些包  conda env list 或 conda info -e #查看当前存在哪些虚拟环境  conda update conda #检查更新当前conda  Pip 和 conda 的区别：Pip installs Python packages whereas conda installs packages">
-<meta name="keywords" content="conda,pip">
+  <meta name="description" content="Eigenvectors of matrix A  Suppose A is a n$\times$n matrix,  Ax_i=\lambda_ix_iwWhy is eigenvectors so important? Answer: The effect of multiplying and dividing by A with its eigenvectors can be summa">
+<meta name="keywords" content="Eigenvectors">
 <meta property="og:type" content="article">
-<meta property="og:title" content="conda基本操作">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;01&#x2F;conda%E4%BD%BF%E7%94%A8&#x2F;index.html">
+<meta property="og:title" content="Review of linear algebra 3">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;Eigenvectors_of%20matrix_A&#x2F;index.html">
 <meta property="og:site_name" content="Victor Zhang&#39;s Blog">
-<meta property="og:description" content="〇.conda基础conda常用的命令:123conda list #查看安装了哪些包  conda env list 或 conda info -e #查看当前存在哪些虚拟环境  conda update conda #检查更新当前conda  Pip 和 conda 的区别：Pip installs Python packages whereas conda installs packages">
+<meta property="og:description" content="Eigenvectors of matrix A  Suppose A is a n$\times$n matrix,  Ax_i=\lambda_ix_iwWhy is eigenvectors so important? Answer: The effect of multiplying and dividing by A with its eigenvectors can be summa">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-02T14:45:58.639Z">
+<meta property="og:updated_time" content="2019-11-22T17:33:35.620Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/01/conda%E4%BD%BF%E7%94%A8/">
+<link rel="canonical" href="http://yoursite.com/2019/11/07/Eigenvectors_of%20matrix_A/">
 
 
 <script id="page-configurations">
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title>conda基本操作 | Victor Zhang's Blog</title>
+  <title>Review of linear algebra 3 | Victor Zhang's Blog</title>
   
 
 
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/01/conda%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/Eigenvectors_of%20matrix_A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          conda基本操作
+          Review of linear algebra 3
         </h1>
 
         <div class="post-meta">
@@ -208,14 +208,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-11-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-01T00:00:00+08:00">2019-11-01</time>
+              <time title="Created: 2019-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-07T00:00:00+08:00">2019-11-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-02 22:45:58" itemprop="dateModified" datetime="2019-11-02T22:45:58+08:00">2019-11-02</time>
+                <time title="Modified: 2019-11-23 01:33:35" itemprop="dateModified" datetime="2019-11-23T01:33:35+08:00">2019-11-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,14 +223,14 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/conda/" itemprop="url" rel="index">
-                    <span itemprop="name">conda</span>
+                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
+                    <span itemprop="name">Linear algebra</span>
                   </a>
                 </span>
             </span>
@@ -246,20 +246,93 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="〇-conda基础"><a href="#〇-conda基础" class="headerlink" title="〇.conda基础"></a>〇.conda基础</h3><p>conda常用的命令:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda list #查看安装了哪些包  </span><br><span class="line">conda env list 或 conda info -e #查看当前存在哪些虚拟环境  </span><br><span class="line">conda update conda #检查更新当前conda</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>Pip 和 conda 的区别：Pip installs Python packages whereas conda installs packages which may contain software written in any language. For example, before using pip, a Python interpreter must be installed via a system package manager or by downloading and running an installer. Conda on the other hand can install Python packages as well as the Python interpreter directly.</p>
-<p>Occasionally a package is needed which is not available as a conda package but is available on PyPI and can be installed with pip. In these cases, it makes sense to try to use both conda and pip.</p>
+        <blockquote>
+<p>Eigenvectors of matrix A</p>
 </blockquote>
-<h3 id="一-虚拟环境的作用"><a href="#一-虚拟环境的作用" class="headerlink" title="一.虚拟环境的作用"></a>一.虚拟环境的作用</h3><p>问题：如果在一台电脑上, 想开发多个不同的项目, 需要用到同一个包的不同版本, 如果使用上面的命令, 在同一个目录下安装或者更新, 新版本会覆盖以前的版本, 其它的项目就无法运行了。解决方案 : 虚拟环境 作用 : 虚拟环境可以搭建独立的python运行环境, 使得单个项目的运行环境与其它项目互不影响。</p>
-<h3 id="二-创建虚拟环境的流程"><a href="#二-创建虚拟环境的流程" class="headerlink" title="二.创建虚拟环境的流程"></a>二.创建虚拟环境的流程</h3><p>1.在命令行输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n your_env_name python=python_version</span><br></pre></td></tr></table></figure>
-<p>2.使用激活(或切换不同python版本)的虚拟环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python --version #可以检查当前python的版本</span><br><span class="line">Linux: source activate your_env_name(虚拟环境名称)</span><br><span class="line">Windows: activate your_env_name(虚拟环境名称)</span><br></pre></td></tr></table></figure>
-<h3 id="三-对虚拟环境中安装额外的包"><a href="#三-对虚拟环境中安装额外的包" class="headerlink" title="三.对虚拟环境中安装额外的包"></a>三.对虚拟环境中安装额外的包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install -n your_env_name [package]</span><br><span class="line">conda upgrade -n your_env_name [package] #更新安装包</span><br></pre></td></tr></table></figure>
-<h3 id="四-关闭虚拟环境"><a href="#四-关闭虚拟环境" class="headerlink" title="四.关闭虚拟环境"></a>四.关闭虚拟环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux: source deactivate</span><br><span class="line">Windows: deactivate</span><br></pre></td></tr></table></figure>
-<h3 id="五-删除虚拟环境"><a href="#五-删除虚拟环境" class="headerlink" title="五.删除虚拟环境"></a>五.删除虚拟环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n your_env_name --all</span><br><span class="line">conda remove --name your_env_name  package_name  # 删除环境中的某个包</span><br></pre></td></tr></table></figure>
-<h3 id="六-添加conda下载镜像"><a href="#六-添加conda下载镜像" class="headerlink" title="六.添加conda下载镜像"></a>六.添加conda下载镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels</span><br><span class="line">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+<p>Suppose A is a n$\times$n matrix,</p>
+<script type="math/tex; mode=display">
+Ax_i=\lambda_ix_iw</script><p>Why is eigenvectors so important? Answer: The effect of multiplying and dividing by A with its eigenvectors can be summarized by multiplying and dividing by the corresponding eigenvalues. i.e.</p>
+<script type="math/tex; mode=display">
+A^kx_i = \lambda_i^kx_i\\
+A^{-1}x_i=\frac{1}{\lambda_i}x_i\\
+e^{At}x_i=e^{\lambda_it}x_i</script><p>We can use eigenvectors of A as a basis so that any vector in the column space of A can be expressed with respect to this basis:</p>
+<script type="math/tex; mode=display">
+v= c_1x_1+\cdots+c_nx_n</script><p>Utilizing this basis representation, we can solve two vector equations, namely, difference equation and differential equation.</p>
+<ul>
+<li><p>Difference equation</p>
+<script type="math/tex; mode=display">
+v_{k+1}=Av_k\\
+v_k = A^kv=c_1\lambda_1^kx_1+\cdots+c_n\lambda_n^kx_n</script></li>
+<li><p>Differential equation</p>
+<script type="math/tex; mode=display">
+\frac{dv}{dt}=Av\\
+v = c_1e^{\lambda_1t}x_1+\cdots+c_ne^{\lambda_nt}x_n</script></li>
+</ul>
+<blockquote>
+<p>Similar matrix</p>
+</blockquote>
+<p>B is similar to A iff $B=M^{-1}AM$ ($M$ is any invertiable matrix).</p>
+<ul>
+<li>B and A have the same eigenvalues.</li>
+</ul>
+<p><u>Proof.</u></p>
+<script type="math/tex; mode=display">
+\begin{align}
+By&=\lambda y\\
+M^{-1}AMy&=\lambda y\\
+A(My)&=\lambda (My)
+\end{align}</script><p>$\lambda$ is also an eigenvalue of A with different eigenvectors.</p>
+<ul>
+<li>AB has the same non-zero eigenvalues as BA</li>
+</ul>
+<p><u>Proof.</u></p>
+<script type="math/tex; mode=display">
+\begin{align}
+Take \ M&=B\\
+M(AB)M^{-1}&=BABB^{-1}=BA\\
+\end{align}</script><p>AB is similar to BA, hence they have the same eigenvalues.</p>
+<p>For any matrix A, we want to find a special matrix M that makes A similar to its eigenvalue matrix $\Lambda$ (diagonal matrix with eigenvalues as its diagonal elements), i.e.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+M^{-1}AM&=\Lambda\\AM&=M\Lambda\\A[m_1\cdots m_n]&=[\lambda_1m_1\cdots \lambda_nm_n]\\\ [Am_1\cdots Am_n]&=[\lambda_1m_1\cdots \lambda_nm_n]\\m_i&=x_i
+\end{align}</script><p>M has A’s eigenvectors as its columns, A can be espressed as $A=X\Lambda X^{-1}$.</p>
+<blockquote>
+<p>Symmetric matrices</p>
+</blockquote>
+<p>Symmetric matrices have all real eigenvalues.</p>
+<ul>
+<li>counter examples (anti-symmetric matrix)<script type="math/tex; mode=display">
+A=\left(\begin{array}{cc}0 & 1 \\-1 & 0\end{array}\right)</script>$\lambda_1+\lambda_2=tr(A)=0$, $\lambda_1\lambda_2=det(A)=1$ =&gt; $\lambda_1 = i,\ \lambda_2=-i$ .</li>
+</ul>
+<p>For symmetric matrix S, its eigenvector are orthogonal.</p>
+<script type="math/tex; mode=display">
+\begin{align}
+S &= Q\Lambda Q^{-1}\\
+S^T &= {(Q^{-1})}^T\Lambda Q^T=S\\
+Q^{-1} &=Q^T\\
+S&=Q\Lambda Q^T\ (spectral\ theorem)
+\end{align}</script><p>In practice, Q has to be normalized to give orthonormal columns.</p>
+<blockquote>
+<p>Symmetric positive definite matrix S</p>
+</blockquote>
+<p>Positive-definiteness of symmetric matrix S can be concluded by the following 5 criteria:</p>
+<ol>
+<li>All $\lambda_i = 0$;</li>
+<li>For all $x\neq 0$, energy $x^TSx&gt;0$;</li>
+<li>$S=A^TA$ (independent columns in A);</li>
+<li>All leading determinants &gt; 0;</li>
+<li>All pivots in elimination &gt; 0;</li>
+</ol>
+<p>e.g.</p>
+<script type="math/tex; mode=display">
+S=\left(\begin{array}{cc}3 & 4 \\4 & 6\end{array}\right)</script><p>Use criterion 4, 1st determinant = 3 &gt; 0, 2nd determinant = $3\times6-4\times4=2&gt;0$;</p>
+<p>Use criterion 5, elimination gives</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{cc}3 & 4 \\0 & 2/3\end{array}\right)</script><p>1st pivot 3 &gt; 0, 2nd pivot 2/3 &gt; 0;</p>
+<p>Use criterion 2,</p>
+<script type="math/tex; mode=display">
+f(x,y)=(x\ y)\left(\begin{array}{cc}3 & 4 \\4 & 6\end{array}\right)\left(\begin{array}{cc}x \\ y\end{array}\right)=3x^2+6y^2+8xy>0\ (bowl-shape\ energy\ profile)</script><p>If S, T are both pos.def.(positive difinite), S+T is also pos.def.</p>
+<p>If S is pos.def. ,$S^{-1}$ is also pos.def.</p>
 
     </div>
 
@@ -269,21 +342,23 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/conda/" rel="tag"># conda</a>
-              <a href="/tags/pip/" rel="tag"># pip</a>
+              <a href="/tags/Eigenvectors/" rel="tag"># Eigenvectors</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/07/orthogonal%20_colmuns/" rel="next" title="Review of linear algebra 2">
+                  <i class="fa fa-chevron-left"></i> Review of linear algebra 2
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/02/%E7%94%A8Hexo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="prev" title="Start blogging with Hexo">
-                  Start blogging with Hexo <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/14/Singular_value_decomposition(SVD)/" rel="prev" title="Review of linear algebra 4">
+                  Review of linear algebra 4 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -323,7 +398,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#〇-conda基础"><span class="nav-number">1.</span> <span class="nav-text">〇.conda基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-虚拟环境的作用"><span class="nav-number">2.</span> <span class="nav-text">一.虚拟环境的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-创建虚拟环境的流程"><span class="nav-number">3.</span> <span class="nav-text">二.创建虚拟环境的流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-对虚拟环境中安装额外的包"><span class="nav-number">4.</span> <span class="nav-text">三.对虚拟环境中安装额外的包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-关闭虚拟环境"><span class="nav-number">5.</span> <span class="nav-text">四.关闭虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-删除虚拟环境"><span class="nav-number">6.</span> <span class="nav-text">五.删除虚拟环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-添加conda下载镜像"><span class="nav-number">7.</span> <span class="nav-text">六.添加conda下载镜像</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
