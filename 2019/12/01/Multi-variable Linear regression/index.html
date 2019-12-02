@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="Victor Zhang&#39;s Blog">
 <meta property="og:description" content="Multi-variable Linear regression Problem: Given a train set $\{(\textbf{x}^{(i)},y^{(i)}); i=1,\cdots, N\}, \textbf{x}^{(i)}=[x_1^{(i)},\cdots,x_d^{(i)}]^T$, try to find $f(\textbf{x})=\textbf{w}^T\t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-02T16:17:39.345Z">
+<meta property="og:updated_time" content="2019-12-02T16:24:20.999Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://yoursite.com/2019/12/01/Multi-variable%20Linear%20regression/">
@@ -215,7 +215,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-03 00:17:39" itemprop="dateModified" datetime="2019-12-03T00:17:39+08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-03 00:24:20" itemprop="dateModified" datetime="2019-12-03T00:24:20+08:00">2019-12-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -474,6 +474,54 @@ P(y_i=1)=\sigma(\bar{\textbf{w}}\textbf{x})</script><p>The probability distribut
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
