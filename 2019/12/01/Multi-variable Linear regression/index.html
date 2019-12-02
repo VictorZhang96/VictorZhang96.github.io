@@ -50,18 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="Matrix $Q$ with orthonormal columns Orthonormal columns $Q=[q_1, \cdots, q_2]$ , i.e. Q^TQ = I=\begin{cases}       &amp; {q_i^Tq_j=0\qquad (&amp;apos;ortho&amp;apos;)} \\       &amp; {\quad q_i^2=1}\qquad (&amp;apos;norm&amp;apos;)         \en">
-<meta name="keywords" content="Orthogonal columns">
+  <meta name="description" content="Multi-variable Linear regression Problem: Given a train set $\{(\textbf{x}^{(i)},y^{(i)}); i=1,\cdots, N\}, \textbf{x}^{(i)}=[x_1^{(i)},\cdots,x_d^{(i)}]^T$, try to find $f(\textbf{x})=\textbf{w}^T\t">
+<meta name="keywords" content="Linear regression,Gradient descent,Logistic regression">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Review of linear algebra 2">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;07&#x2F;orthogonal%20_colmuns&#x2F;index.html">
+<meta property="og:title" content="Linear regression, Gradient descent and Logistic regression">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;Multi-variable%20Linear%20regression&#x2F;index.html">
 <meta property="og:site_name" content="Victor Zhang&#39;s Blog">
-<meta property="og:description" content="Matrix $Q$ with orthonormal columns Orthonormal columns $Q=[q_1, \cdots, q_2]$ , i.e. Q^TQ = I=\begin{cases}       &amp; {q_i^Tq_j=0\qquad (&amp;apos;ortho&amp;apos;)} \\       &amp; {\quad q_i^2=1}\qquad (&amp;apos;norm&amp;apos;)         \en">
+<meta property="og:description" content="Multi-variable Linear regression Problem: Given a train set $\{(\textbf{x}^{(i)},y^{(i)}); i=1,\cdots, N\}, \textbf{x}^{(i)}=[x_1^{(i)},\cdots,x_d^{(i)}]^T$, try to find $f(\textbf{x})=\textbf{w}^T\t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-22T17:33:21.974Z">
+<meta property="og:updated_time" content="2019-12-02T16:17:39.345Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/11/07/orthogonal%20_colmuns/">
+<link rel="canonical" href="http://yoursite.com/2019/12/01/Multi-variable%20Linear%20regression/">
 
 
 <script id="page-configurations">
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title>Review of linear algebra 2 | Victor Zhang's Blog</title>
+  <title>Linear regression, Gradient descent and Logistic regression | Victor Zhang's Blog</title>
   
 
 
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/orthogonal%20_colmuns/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/Multi-variable%20Linear%20regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Review of linear algebra 2
+          Linear regression, Gradient descent and Logistic regression
         </h1>
 
         <div class="post-meta">
@@ -208,14 +208,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2019-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-07T00:00:00+08:00">2019-11-07</time>
+              <time title="Created: 2019-12-01 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-01T00:00:00+08:00">2019-12-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-23 01:33:21" itemprop="dateModified" datetime="2019-11-23T01:33:21+08:00">2019-11-23</time>
+                <time title="Modified: 2019-12-03 00:17:39" itemprop="dateModified" datetime="2019-12-03T00:17:39+08:00">2019-12-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,14 +223,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index">
-                    <span itemprop="name">Math</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/Linear-algebra/" itemprop="url" rel="index">
-                    <span itemprop="name">Linear algebra</span>
+                  <a href="/categories/Machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine learning</span>
                   </a>
                 </span>
             </span>
@@ -247,42 +241,62 @@
 
       
         <blockquote>
-<p>Matrix $Q$ with orthonormal columns</p>
-</blockquote><p>Orthonormal columns $Q=[q_1, \cdots, q_2]$ , i.e.</p><script type="math/tex; mode=display">
-Q^TQ = I=\begin{cases}
-      & {q_i^Tq_j=0\qquad ('ortho')} \\
-      & {\quad q_i^2=1}\qquad ('norm')
-        \end{cases}</script><a id="more"></a>
+<p>Multi-variable Linear regression</p>
+</blockquote><p>Problem: Given a train set $\{(\textbf{x}^{(i)},y^{(i)}); i=1,\cdots, N\}, \textbf{x}^{(i)}=[x_1^{(i)},\cdots,x_d^{(i)}]^T$, try to find $f(\textbf{x})=\textbf{w}^T\textbf{x}+b, so\ that\ f(\textbf{x}^{(i)})\approx y^{(i)}$.</p><a id="more"></a>
 
-<p>Additionally, if $Q$ is a square matrix, $Q^TQ=I$ implies $Q^T=Q^{-1}$, in which case $QQ^T=I$ also holds. This  square matrix is called <strong>orthogonal matrix</strong>.</p>
+<p>Rewrite $f=\textbf{X}\bar{\textbf{w}}$, where</p>
+<script type="math/tex; mode=display">
+\bar{\textbf{w}}=\left(\begin{array}{c}\textbf{w} \\b\end{array}\right),\textbf{X}={\left(\begin{array}{cc}\textbf{x}^{(1)} & 1 \\\cdots & \cdots \\\textbf{x}^{(N)} & 1\end{array}\right)}_{N\times (d+1)}</script><p>Given loss function $||y-\textbf{X}\bar{\textbf{w}}||^2_2$, want to minimize loss function, i.e.</p>
+<script type="math/tex; mode=display">
+min||y-\textbf{X}\bar{\textbf{w}}||^2_2</script><p>Let the gradient of the loss function be 0, solve for $\bar{\textbf{w}}$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+g(\bar{\textbf{w}})&=0\\
+2\textbf{X}^T(\textbf{X}\bar{\textbf{w}}-\textbf{y})&=0\\
+\bar{\textbf{w}}^{\star}&=(\textbf{X}^T\textbf{X})^{-1}\textbf{X}^T\textbf{y}
+\end{align}</script><p>In practice, the gradient of the loss function is very hard to compute, need to find optimization method.</p>
 <blockquote>
-<p>Examples of orthogonal matrices</p>
+<p>Gradient descent</p>
 </blockquote>
-<ul>
-<li><p>2D rotation matrix</p>
+<p>Use taylor expansion of the loss function up to first order, generally we have</p>
 <script type="math/tex; mode=display">
-\left(\begin{array}{cc}cos\theta & -sin\theta \\sin\theta & cos\theta\end{array}\right)</script></li>
-<li><p>2D reflection matrix (reflect w.r.t. $\frac{\theta}{2}$ line)</p>
+f(\textbf{x}_k+\textbf{d}_k)\approx f(\textbf{x}_k)+g^T(\textbf{x}_k)\textbf{d}_k</script><p>For our specific loss function</p>
 <script type="math/tex; mode=display">
-\left(\begin{array}{cc}cos\theta & sin\theta \\sin\theta & -cos\theta\end{array}\right)</script></li>
-<li><p>General reflection matrix (Householder reflection matrix)</p>
+\begin{align}
+g(\bar{\textbf{w}})&=2\textbf{X}^T(\textbf{X}\bar{\textbf{w}}-\textbf{y})\\
+\bar{\textbf{w}}&\leftarrow\bar{\textbf{w}}-\alpha g(\bar{\textbf{w}})
+\end{align}</script><hr>
+<p>Computer algorithm:</p>
+<ol>
+<li>Select a starting point, set convergence tolerance $\epsilon$ , count <em>k</em> = 0.</li>
+<li>Compute the gradient of the function, which will serve as the direction of the fastest descent.</li>
+<li>Choose learning rate $\alpha_k$, iterating $\textbf{x}_{k+1}=\textbf{x}_{k}-\alpha_kg(\textbf{x}_k)$.</li>
+<li>If $||g_k||&lt;\epsilon$, stop the iteration.</li>
+</ol>
+<hr>
+<blockquote>
+<p>Maximum likelihood estimation</p>
+</blockquote>
+<p>In statistics, <strong>maximum likelihood estimation</strong> (<strong>MLE</strong>) is a method of estimating the parameters of a probability distribution by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable.</p>
+<p>From a statistical standpoint, a given set of observations are a randon sample form an unknown population. The goal of maximum likelihood estimation is to make inferences about the population that is most likely to have generated the sample, specifically the joint probability distribution of the random variables $\{y_1,y_2,\cdots\}$. Associated with each probability distribution is a unique vector $\theta=[\theta_1,\theta_2,\cdots,\theta_k]^T$ of parameters that index the probavility distribution, i.e.</p>
 <script type="math/tex; mode=display">
-Let\ U^TU=1\\
-H = I-2UU^T</script><p>It’s easy to show that H is both symmetric and orthogonal.</p>
-</li>
-<li><p>Other important orthogonal matrices  </p>
-<ul>
-<li>Hadamard matrices</li>
-<li>Haar matrices (wavelet)</li>
-</ul>
-</li>
-<li><p>Eigenvectors of symmetric matrices and orthogonal matrices are orthogonal</p>
-<p>e.g. Permutation matrix</p>
+L_n(\theta)=L_n(\theta;\textbf{y})=f_n(\textbf{y};\theta)</script><p>which is called the likelihood function. In practice, it is often convenient to work with the natural logarithm of the likelihood function, called the log-likelihood</p>
 <script type="math/tex; mode=display">
-Q=\left(\begin{array}{cccc}0 & 1 & 0 & 0 \\0 & 0 & 1& 0 \\0 & 0 & 0 & 1 \\1 & 0 & 0 & 0\end{array}\right)</script><p>The eigenvectors of the permutation matrix is 4 discrete Fourier transform, eigenvector matrix of Q is</p>
+\ell(\theta;\textbf{y})=lnL_n(\theta;\textbf{y})</script><p>Since the logrithm is a monotonically increasing function, the maximum of $\ell(\theta;\textbf{y})$ occurs at the same value of $\theta$ as does the maximum of $L_n$. If $\ell(\theta;\textbf{y})$ is differentiable in $\theta$, the necessary conditions for the occurrence of a maximum (or a minimum) are</p>
 <script type="math/tex; mode=display">
-F_4=\left(\begin{array}{cccc}1 & 1 & 1 & 1 \\1 & i & i^2 & i^3 \\1 & i^2 & i^4 & i^6 \\1 & i^3 & i^6 & i^9\end{array}\right)</script></li>
-</ul>
+\frac{\partial\ell}{\partial\theta_1}=0,\ \frac{\partial\ell}{\partial\theta_1}=0,\ \cdots,\ \frac{\partial\ell}{\partial\theta_k}=0</script><p>which is known as the likelihood equations. The specific value $\hat{\theta}=\hat{\theta}_n(\textbf{y})\in\Theta$ that maximizes the likelihood function $L_n$ is called the maximum likelihood estimator.</p>
+<blockquote>
+<p>Logistic regression</p>
+</blockquote>
+<p>The core idea of logistic regression is turning linear regression into a two-fold classifier.</p>
+<p>Mapping function</p>
+<script type="math/tex; mode=display">
+\begin{align}
+y&=\textbf{w}^T\textbf{x}+b\\
+\sigma(y)&=\frac{1}{1+e^{-y}}
+\end{align}</script><p>Sigmoid function $\sigma(y)$ maps $(-\infty ,+\infty)$ into $(0,1)$ which can be interpreted as probability.</p>
+<script type="math/tex; mode=display">
+P(y_i=1)=\sigma(\bar{\textbf{w}}\textbf{x})</script><p>The probability distribution of logistic regression is a bernoulli distribution (a.k.a 0-1 distribution)</p>
 
     </div>
 
@@ -292,24 +306,23 @@ F_4=\left(\begin{array}{cccc}1 & 1 & 1 & 1 \\1 & i & i^2 & i^3 \\1 & i^2 & i^4 &
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Orthogonal-columns/" rel="tag"># Orthogonal columns</a>
+              <a href="/tags/Linear-regression/" rel="tag"># Linear regression</a>
+              <a href="/tags/Gradient-descent/" rel="tag"># Gradient descent</a>
+              <a href="/tags/Logistic-regression/" rel="tag"># Logistic regression</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/07/Eigenvectors_of%20matrix_A/" rel="next" title="Review of linear algebra 3">
-                  <i class="fa fa-chevron-left"></i> Review of linear algebra 3
+                <a href="/2019/12/01/depthwise_saparable_convolution/" rel="next" title="Depthwise separable convolution">
+                  <i class="fa fa-chevron-left"></i> Depthwise separable convolution
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/14/Singular_value_decomposition(SVD)/" rel="prev" title="Review of linear algebra 4">
-                  Review of linear algebra 4 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -461,54 +474,6 @@ F_4=\left(\begin{array}{cccc}1 & 1 & 1 & 1 \\1 & i & i^2 & i^3 \\1 & i^2 & i^4 &
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
